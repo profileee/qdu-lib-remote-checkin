@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <title>library check in</title>
+    <meta charset="UTF-8">
+</head>
+
+<body style="display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: larger;
+">
+    <div><img class="bg" src="https://api.dujin.org/bing/1920.php"></div>
+    <div class="main">
+
+        <h1>请选择校区和房间：</h1>
+        <label for="campus">请选择校区：</label>
+        <select id="campus" onchange="updateRoomList()">
+            <option value="浮山校区">浮山校区</option>
+            <option value="金家岭校区">金家岭校区</option>
+        </select>
+        <br></br>
+        <label for="room">请选择房间：</label>
+        <select id="room">
+            <!-- 默认显示浮山校区的所有房间 -->
+            <option value="0">自主学习专区B203室</option>
+            <option value="198">考研学习专区B204室</option>
+            <option value="288">网络学习专区B205室</option>
+            <option value="376">信息共享专区B206室</option>
+            <option value="524">学研创新专区A203室</option>
+            <option value="682">二楼B区自修区</option>
+            <option value="706">三楼A区自修区</option>
+            <option value="718">三楼B区自修区</option>
+            <option value="754">三楼大厅自修区</option>
+        </select>
+
+        <br><br>
+
+        <label for="seatNum">请输入您的座位号：</label>
+        <input type="text" id="seatNum">
+        <br><br>
+        <button class="btn" onclick="calculate()">点击生成</button>
+        <br><br>
+
+        <a id="result" href="#"></a>
+
+        <script>
+            function updateRoomList() {
+                // 获取当前选择的校区
+                var campus = document.getElementById("campus").value;
+
+                // 根据所选校区更新房间列表
+                var roomList = document.getElementById("room");
+                roomList.options.length = 0; // 清空房间列表
+
+                if (campus === "浮山校区") {
+                    // 添加浮山校区的房间
+                    var room101 = document.createElement("option");
+                    room101.value = "0";
+                    room101.text = "自主学习专区B203室";
+                    roomList.add(room101);
+
+                    var room102 = document.createElement("option");
+                    room102.value = "198";
+                    room102.text = "考研学习专区B204室";
+                    roomList.add(room102);
+
+                    var room103 = document.createElement("option");
+                    room103.value = "288";
+                    room103.text = "网络学习专区B205室";
+                    roomList.add(room103);
+
+                    var room103 = document.createElement("option");
+                    room103.value = "376";
+                    room103.text = "信息共享专区B206室";
+                    roomList.add(room103);
+
+                    var room103 = document.createElement("option");
+                    room103.value = "524";
+                    room103.text = "学研创新专区A203室";
+                    roomList.add(room103);
+
+                    var room103 = document.createElement("option");
+                    room103.value = "682";
+                    room103.text = "二楼B区自修区";
+                    roomList.add(room103);
+
+                    var room103 = document.createElement("option");
+                    room103.value = "706";
+                    room103.text = "三楼A区自修区";
+                    roomList.add(room103);
+
+                    var room103 = document.createElement("option");
+                    room103.value = "718";
+                    room103.text = "三楼B区自修区";
+                    roomList.add(room103);
+
+                    var room103 = document.createElement("option");
+                    room103.value = "754";
+                    room103.text = "三楼大厅自修区";
+                    roomList.add(room103);
+
+                } else if (campus === "金家岭校区") {
+                    // 添加金家岭校区的房间
+                    var room201 = document.createElement("option");
+                    room201.value = "814";
+                    room201.text = "一楼大厅自修区";
+                    roomList.add(room201);
+
+                    var room202 = document.createElement("option");
+                    room202.value = "874";
+                    room202.text = "二楼大厅自修区";
+                    roomList.add(room202);
+
+                    var room203 = document.createElement("option");
+                    room203.value = "994";
+                    room203.text = "208自修室";
+                    roomList.add(room203);
+
+                    var room203 = document.createElement("option");
+                    room203.value = "1178";
+                    room203.text = "三楼大厅自修区";
+                    roomList.add(room203);
+
+                    var room203 = document.createElement("option");
+                    room203.value = "1302";
+                    room203.text = "310自修室";
+                    roomList.add(room203);
+
+                    var room203 = document.createElement("option");
+                    room203.value = "1486";
+                    room203.text = "408多媒体阅览室";
+                    roomList.add(room203);
+
+                    var room203 = document.createElement("option");
+                    room203.value = "1584";
+                    room203.text = "411大自修室";
+                    roomList.add(room203);
+
+                    var room203 = document.createElement("option");
+                    room203.value = "1780";
+                    room203.text = "411小自修室";
+                    roomList.add(room203);
+                }
+            }
+
+            function calculate() {
+                // 获取用户输入的房间号和座位号
+                var roomNum = document.getElementById("room").value;
+                var seatNum = document.getElementById("seatNum").value;
+                // 计算房间号和座位号的和并显示结果
+                var result = parseInt(roomNum) + parseInt(seatNum);
+                var res = document.getElementById("result")
+                res.innerText = "————点击此处签到————"
+                res.href = "http://update.unifound.net/wxnotice/s.aspx?c=4_nSeat_" + result + "_1MU";
+
+            }
+        </script>
+    </div>
+</body>
+
+</html>
+
+<style>
+    .bg {
+        position: absolute;
+        filter: blur(10px);
+        z-index: -1;
+        width: 100%;
+        left: 0;
+        top: 0;
+    }
+    
+    .main {
+        background-color: aliceblue;
+        margin-top: 100px;
+    }
+    
+    .btn {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+        width: 100px;
+        height: 40px;
+        border-radius: 7px;
+    }
+</style>
